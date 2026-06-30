@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { background: #f5f4f1; }
+  ::selection { background: #0d0d0d; color: #f5f4f1; }
+  @keyframes rise { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position: relative; width: 100%; min-height: 100vh; background: #f5f4f1; color: #0d0d0d; font-family: 'Archivo', sans-serif; overflow-x: hidden;">
+
+  <!-- scroll progress -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: transparent; z-index: 200; pointer-events: none;">
+    <div data-progress="true" style="height: 100%; width: 0%; background: #0d0d0d;"></div>
+  </div>
+
+  <!-- floating project preview -->
+  <div data-preview="true" style="position: fixed; top: 0; left: 0; width: 340px; height: 430px; z-index: 90; pointer-events: none; opacity: 0; transition: opacity .45s ease; will-change: transform;">
+    <div data-pimg="0" style="position: absolute; inset: 0; opacity: 0; transition: opacity .3s ease; background-image: repeating-linear-gradient(45deg, #e7e6e2 0 11px, #efeeea 11px 22px); display: flex; align-items: center; justify-content: center;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #8b8a85; text-transform: uppercase;">[ timeless di-zin ]</span>
+    </div>
+    <div data-pimg="1" style="position: absolute; inset: 0; opacity: 0; transition: opacity .3s ease; background-image: repeating-linear-gradient(45deg, #e7e6e2 0 11px, #efeeea 11px 22px); display: flex; align-items: center; justify-content: center;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #8b8a85; text-transform: uppercase;">[ oayastech cbt ]</span>
+    </div>
+    <div data-pimg="2" style="position: absolute; inset: 0; opacity: 0; transition: opacity .3s ease; background-image: repeating-linear-gradient(45deg, #e7e6e2 0 11px, #efeeea 11px 22px); display: flex; align-items: center; justify-content: center;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #8b8a85; text-transform: uppercase;">[ client work ]</span>
+    </div>
+  </div>
+
+  <!-- nav -->
+  <nav style="position: fixed; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px 32px; z-index: 100; mix-blend-mode: normal;">
+    <a href="#top" style="text-decoration: none; color: #0d0d0d; font-weight: 800; font-size: 15px; letter-spacing: -0.3px; display: flex; align-items: baseline; gap: 8px;">
+      Moses Kwagga
+      <span style="font-family: 'Space Mono', monospace; font-weight: 400; font-size: 11px; color: #9a9a95;">©26</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 28px;">
+      <a href="#work" style="text-decoration: none; color: #0d0d0d; font-size: 13px; font-weight: 500;" style-hover="opacity:0.55;">Work</a>
+      <a href="#skills" style="text-decoration: none; color: #0d0d0d; font-size: 13px; font-weight: 500;" style-hover="opacity:0.55;">Skills</a>
+      <a href="#about" style="text-decoration: none; color: #0d0d0d; font-size: 13px; font-weight: 500;" style-hover="opacity:0.55;">About</a>
+      <a href="#contact" style="text-decoration: none; color: #0d0d0d; font-size: 13px; font-weight: 500;" style-hover="opacity:0.55;">Contact</a>
+      <span data-clock="true" style="font-family: 'Space Mono', monospace; font-size: 11px; color: #9a9a95; min-width: 96px; text-align: right;">—:—:— WAT</span>
+    </div>
+  </nav>
+
+  <div id="top"></div>
+
+  <!-- ===================== HERO — Geometric / centered ===================== -->
+  <section data-hero="1" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 90px 32px; position: relative; text-align: center;">
+    <svg aria-hidden="true" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse 62% 56% at 50% 50%, transparent 0%, transparent 30%, #000 82%); mask-image: radial-gradient(ellipse 62% 56% at 50% 50%, transparent 0%, transparent 30%, #000 82%);">
+      <defs>
+        <pattern id="circuit-pattern" width="180" height="180" patternUnits="userSpaceOnUse">
+          <g fill="none" stroke="#ecebe6" stroke-width="1.1">
+            <path d="M0 46 H56 V12" />
+            <path d="M90 0 V64 H180" />
+            <path d="M24 180 V134 H82 V96" />
+            <path d="M134 180 V120 H180" />
+            <path d="M180 100 H128 V72" />
+            <path d="M0 124 H40 V168" />
+            <path d="M56 46 H110" />
+            <path d="M90 64 V108" />
+          </g>
+          <g fill="#e4e3dd">
+            <circle cx="56" cy="46" r="2.6" />
+            <circle cx="90" cy="64" r="2.6" />
+            <circle cx="82" cy="96" r="2.6" />
+            <circle cx="128" cy="72" r="2.6" />
+            <circle cx="40" cy="124" r="2.6" />
+            <circle cx="110" cy="46" r="2.6" />
+          </g>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#circuit-pattern)" />
+    </svg>
+    <svg aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse 62% 56% at 50% 50%, transparent 0%, transparent 30%, #000 82%); mask-image: radial-gradient(ellipse 62% 56% at 50% 50%, transparent 0%, transparent 30%, #000 82%);">
+      <path id="trace-a" d="M-40 150 H110 V330 H240 V560" fill="none" stroke="#dcdbd5" stroke-width="1.4" stroke-linejoin="round" />
+      <path id="trace-b" d="M1480 740 H1330 V500 H1200 V280" fill="none" stroke="#dcdbd5" stroke-width="1.4" stroke-linejoin="round" />
+      <g>
+        <circle r="7" fill="#0d0d0d" opacity="0.04" />
+        <circle r="2.2" fill="#b6b5af" />
+        <animateMotion dur="17s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#trace-a" />
+        </animateMotion>
+      </g>
+      <g>
+        <circle r="7" fill="#0d0d0d" opacity="0.04" />
+        <circle r="2.2" fill="#b6b5af" />
+        <animateMotion dur="21s" begin="-6s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#trace-b" />
+        </animateMotion>
+      </g>
+    </svg>
+    <span style="position: relative; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 3px; color: #9a9a95; text-transform: uppercase; margin-bottom: 26px;">Portfolio — 2026</span>
+    <h1 style="position: relative; margin: 0; font-weight: 900; font-size: clamp(48px, 11vw, 180px); line-height: 0.84; letter-spacing: -0.045em;">MOSES<br>KWAGGA</h1>
+    <p style="position: relative; margin: 30px 0 0; font-size: clamp(15px, 1.7vw, 20px); font-weight: 500; letter-spacing: 0.02em; color: #2a2a28;">Frontend Engineer &nbsp;·&nbsp; Cyber-Security Analyst</p>
+    <div style="position: relative; display: flex; align-items: center; gap: 10px; margin-top: 26px; font-family: 'Space Mono', monospace; font-size: 12px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: #0d0d0d; display: inline-block;"></span>
+      Available for work
+    </div>
+  </section>
+
+  <!-- ===================== WORK ===================== -->
+  <section id="work" style="scroll-margin-top: 90px; padding: 40px 32px 30px; border-top: 1px solid #e0dfdb;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; animation-name: rise; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 6% cover 26%;">
+      <h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 1.5px; color: #9a9a95; text-transform: uppercase; font-weight: 400;">Selected Work</h2>
+      <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">(03)</span>
+    </div>
+
+    <a data-prow="0" href="#contact" style="text-decoration: none; color: #0d0d0d; display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 24px; padding: 34px 0; border-top: 1px solid #e0dfdb; transition: padding-left .5s cubic-bezier(.2,.85,.25,1), background .4s ease;" style-hover="padding-left: 28px; background: #fbfbf9;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #9a9a95;">01</span>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: clamp(28px, 4.6vw, 62px); font-weight: 700; line-height: 0.98; letter-spacing: -0.03em;">Timeless Di-zin</span>
+        <span style="font-size: 14px; color: #76756f; font-weight: 500;">Brand & portfolio site — design direction, build, motion</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px; justify-self: end;">
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">Design · Frontend</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">2025</span>
+        <span style="font-size: 20px; line-height: 1;">↗</span>
+      </div>
+    </a>
+
+    <a data-prow="1" href="#contact" style="text-decoration: none; color: #0d0d0d; display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 24px; padding: 34px 0; border-top: 1px solid #e0dfdb; transition: padding-left .5s cubic-bezier(.2,.85,.25,1), background .4s ease;" style-hover="padding-left: 28px; background: #fbfbf9;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #9a9a95;">02</span>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: clamp(28px, 4.6vw, 62px); font-weight: 700; line-height: 0.98; letter-spacing: -0.03em;">OayasTech CBT</span>
+        <span style="font-size: 14px; color: #76756f; font-weight: 500;">Computer-based testing platform serving Nigerian universities</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px; justify-self: end;">
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">React · Security</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">2024</span>
+        <span style="font-size: 20px; line-height: 1;">↗</span>
+      </div>
+    </a>
+
+    <a data-prow="2" href="#contact" style="text-decoration: none; color: #0d0d0d; display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 24px; padding: 34px 0; border-top: 1px solid #e0dfdb; border-bottom: 1px solid #e0dfdb; transition: padding-left .5s cubic-bezier(.2,.85,.25,1), background .4s ease;" style-hover="padding-left: 28px; background: #fbfbf9;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #9a9a95;">03</span>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: clamp(28px, 4.6vw, 62px); font-weight: 700; line-height: 0.98; letter-spacing: -0.03em;">Client Portfolios</span>
+        <span style="font-size: 14px; color: #76756f; font-weight: 500;">Personal & business sites — selected freelance engagements</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px; justify-self: end;">
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">Frontend</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">2023—26</span>
+        <span style="font-size: 20px; line-height: 1;">↗</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skills" style="scroll-margin-top: 90px; padding: 96px 32px; border-top: 1px solid #e0dfdb;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 56px; animation-name: rise; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 4% cover 24%;">
+      <h2 style="margin: 0; font-weight: 700; font-size: clamp(30px, 4.4vw, 64px); letter-spacing: -0.03em;">Stack & capabilities</h2>
+      <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">(04)</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1.5px; color: #9a9a95; text-transform: uppercase; padding-bottom: 14px; border-bottom: 1px solid #e0dfdb;">Engineering</span>
+        <span style="font-size: 17px; font-weight: 500;">React & Next.js</span>
+        <span style="font-size: 17px; font-weight: 500;">TypeScript</span>
+        <span style="font-size: 17px; font-weight: 500;">Tailwind / CSS Architecture</span>
+        <span style="font-size: 17px; font-weight: 500;">Node.js</span>
+        <span style="font-size: 17px; font-weight: 500;">Web Performance</span>
+        <span style="font-size: 17px; font-weight: 500;">Accessibility</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1.5px; color: #9a9a95; text-transform: uppercase; padding-bottom: 14px; border-bottom: 1px solid #e0dfdb;">Security</span>
+        <span style="font-size: 17px; font-weight: 500;">Threat Modeling</span>
+        <span style="font-size: 17px; font-weight: 500;">OWASP Top 10</span>
+        <span style="font-size: 17px; font-weight: 500;">Auth & Identity</span>
+        <span style="font-size: 17px; font-weight: 500;">Secure SDLC</span>
+        <span style="font-size: 17px; font-weight: 500;">Vulnerability Assessment</span>
+        <span style="font-size: 17px; font-weight: 500;">Network Analysis</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1.5px; color: #9a9a95; text-transform: uppercase; padding-bottom: 14px; border-bottom: 1px solid #e0dfdb;">Toolkit</span>
+        <span style="font-size: 17px; font-weight: 500;">Figma</span>
+        <span style="font-size: 17px; font-weight: 500;">Git & GitHub</span>
+        <span style="font-size: 17px; font-weight: 500;">Linux</span>
+        <span style="font-size: 17px; font-weight: 500;">Vite</span>
+        <span style="font-size: 17px; font-weight: 500;">Burp / Wireshark</span>
+        <span style="font-size: 17px; font-weight: 500;">Postman</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" style="scroll-margin-top: 90px; padding: 96px 32px; border-top: 1px solid #e0dfdb; display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: start;">
+    <div style="animation-name: rise; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 2% cover 22%;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 1.5px; color: #9a9a95; text-transform: uppercase;">About</span>
+      <p style="margin: 28px 0 0; font-size: clamp(22px, 2.6vw, 38px); font-weight: 500; line-height: 1.28; letter-spacing: -0.02em; text-wrap: pretty;">I'm Moses — a frontend engineer who treats security as part of the craft, not an afterthought. I build interfaces that feel effortless and hold up under pressure, from brand portfolios to testing platforms used across Nigerian universities.</p>
+      <div style="display: flex; gap: 56px; margin-top: 48px; flex-wrap: wrap;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: clamp(34px, 4vw, 54px); font-weight: 700; letter-spacing: -0.03em;">5+</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">Years building</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: clamp(34px, 4vw, 54px); font-weight: 700; letter-spacing: -0.03em;">20+</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">Projects shipped</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: clamp(34px, 4vw, 54px); font-weight: 700; letter-spacing: -0.03em;">∞</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">Coffees debugged</span>
+        </div>
+      </div>
+    </div>
+    <div style="aspect-ratio: 4 / 5; background-image: repeating-linear-gradient(45deg, #e7e6e2 0 12px, #efeeea 12px 24px); display: flex; align-items: center; justify-content: center;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #8b8a85; text-transform: uppercase;">[ portrait ]</span>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT / FOOTER ===================== -->
+  <section id="contact" style="scroll-margin-top: 90px; padding: 96px 32px 0; border-top: 1px solid #e0dfdb;">
+    <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 1.5px; color: #9a9a95; text-transform: uppercase;">Contact</span>
+    <h2 style="margin: 28px 0 40px; font-weight: 700; font-size: clamp(36px, 7vw, 110px); line-height: 0.94; letter-spacing: -0.04em; text-wrap: balance;">Let's build something<br>secure together.</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px 56px; align-items: baseline;">
+      <a data-email="hello|moseskwagga.dev" href="#contact" style="text-decoration: none; color: #0d0d0d; font-size: clamp(20px, 2.6vw, 34px); font-weight: 600; letter-spacing: -0.02em; border-bottom: 2px solid #0d0d0d; padding-bottom: 4px;" style-hover="opacity: 0.55;"><span data-emailtext="true">hello [at] moseskwagga.dev</span></a>
+      <div style="display: flex; gap: 28px;">
+        <a href="#contact" style="text-decoration: none; color: #76756f; font-size: 14px; font-weight: 500;" style-hover="color:#0d0d0d;">GitHub ↗</a>
+        <a href="#contact" style="text-decoration: none; color: #76756f; font-size: 14px; font-weight: 500;" style-hover="color:#0d0d0d;">LinkedIn ↗</a>
+        <a href="#contact" style="text-decoration: none; color: #76756f; font-size: 14px; font-weight: 500;" style-hover="color:#0d0d0d;">X ↗</a>
+      </div>
+    </div>
+
+    <div style="overflow: hidden; margin-top: 90px; border-top: 1px solid #e0dfdb;">
+      <div style="display: flex; width: max-content; animation: marquee 26s linear infinite; padding: 30px 0;">
+        <span style="font-size: clamp(40px, 7vw, 96px); font-weight: 800; letter-spacing: -0.03em; color: #e2e1dc; white-space: nowrap; padding-right: 48px;">SELECTED WORK 2023—2026 · AVAILABLE FOR NEW PROJECTS · </span>
+        <span style="font-size: clamp(40px, 7vw, 96px); font-weight: 800; letter-spacing: -0.03em; color: #e2e1dc; white-space: nowrap; padding-right: 48px;" aria-hidden="true">SELECTED WORK 2023—2026 · AVAILABLE FOR NEW PROJECTS · </span>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 26px 0; border-top: 1px solid #e0dfdb; flex-wrap: wrap; gap: 12px;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">Designed & built by Moses Kwagga — © 2026</span>
+      <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #9a9a95;">Frontend · Security · Lagos, WAT</span>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { rootRef: (el) => { this.root = el; } };
+  }
+
+  componentDidMount() {
+    const root = this.root;
+    if (!root) return;
+
+    // cursor-following project preview
+    const preview = root.querySelector('[data-preview]');
+    const imgs = preview ? Array.from(preview.querySelectorAll('[data-pimg]')) : [];
+    this._t = { x: window.innerWidth * 0.72, y: window.innerHeight * 0.5 };
+    this._c = { x: this._t.x, y: this._t.y };
+    this._mm = (e) => { this._t.x = e.clientX; this._t.y = e.clientY; };
+    document.addEventListener('mousemove', this._mm);
+    const loop = () => {
+      this._c.x += (this._t.x - this._c.x) * 0.14;
+      this._c.y += (this._t.y - this._c.y) * 0.14;
+      if (preview) preview.style.transform = 'translate(' + this._c.x + 'px,' + this._c.y + 'px) translate(-50%,-50%)';
+      this._raf = requestAnimationFrame(loop);
+    };
+    loop();
+    root.querySelectorAll('[data-prow]').forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        const i = +row.dataset.prow;
+        imgs.forEach(im => { im.style.opacity = (+im.dataset.pimg === i) ? '1' : '0'; });
+        if (preview && window.innerWidth > 900) preview.style.opacity = '1';
+      });
+      row.addEventListener('mouseleave', () => { if (preview) preview.style.opacity = '0'; });
+    });
+
+    // scroll progress
+    const bar = root.querySelector('[data-progress]');
+    this._sc = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const p = max > 0 ? (h.scrollTop / max) : 0;
+      if (bar) bar.style.width = (p * 100) + '%';
+    };
+    window.addEventListener('scroll', this._sc, { passive: true });
+    this._sc();
+
+    // live WAT clock
+    const clock = root.querySelector('[data-clock]');
+    const tick = () => {
+      if (!clock) return;
+      try {
+        clock.textContent = new Date().toLocaleTimeString('en-GB', { timeZone: 'Africa/Lagos', hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' WAT';
+      } catch (e) {
+        clock.textContent = new Date().toLocaleTimeString();
+      }
+    };
+    tick();
+    this._clk = setInterval(tick, 1000);
+
+    // assemble email at runtime (defeats automatic obfuscation)
+    const mail = root.querySelector('[data-email]');
+    if (mail) {
+      const parts = (mail.getAttribute('data-email') || '').split('|');
+      const addr = parts[0] + String.fromCharCode(64) + parts[1];
+      mail.setAttribute('href', 'mailto:' + addr);
+      const label = mail.querySelector('[data-emailtext]');
+      if (label) label.textContent = addr;
+    }
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    clearInterval(this._clk);
+    document.removeEventListener('mousemove', this._mm);
+    window.removeEventListener('scroll', this._sc);
+  }
+}
+</script>
+</body>
+</html>

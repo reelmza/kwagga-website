@@ -1,0 +1,29 @@
+<svg
+  width="256"
+  height="256"
+  viewBox="0 -12 256 256"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Anchor"
+>
+  <!-- ring eye (annulus punched with even-odd) -->
+  <path
+    fill-rule="evenodd"
+    d="M101 31 A27 27 0 1 0 155 31 A27 27 0 1 0 101 31 Z
+       M115 31 A13 13 0 1 1 141 31 A13 13 0 1 1 115 31 Z"
+  />
+  <!-- stock (crossbar) -->
+  <rect x="64" y="76" width="128" height="16" rx="8" />
+  <!-- shank -->
+  <rect x="119" y="48" width="18" height="104" rx="6" />
+  <!-- arms + flukes + crown -->
+  <path
+    d="M119 150
+       C 96 188 60 178 34 146
+       C 54 190 98 200 128 204
+       C 158 200 202 190 222 146
+       C 196 178 160 188 137 150
+       Z"
+  />
+</svg>

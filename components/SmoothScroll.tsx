@@ -15,6 +15,13 @@ const NAV_OFFSET = 90;
  */
 export function SmoothScroll() {
   useEffect(() => {
+    // Clear the pre-paint flag now that the client has mounted. GSAP's entrance
+    // hooks run in layout effects (before this passive effect), so their inline
+    // opacity already governs the fade — removing the CSS bridge won't flash.
+    // Runs unconditionally so content is revealed even under reduced motion or
+    // if GSAP failed to take over.
+    document.documentElement.classList.remove("gsap-loading");
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({

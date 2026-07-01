@@ -63,6 +63,14 @@
   }
 }
 
+/* Pre-hide load-fade roots so SSR content doesn't flash visible before GSAP's
+   entrance animation takes over. Only active while the blocking head script has
+   flagged the document (skipped under reduced motion); the flag is removed once
+   the client mounts, after GSAP has set its own inline opacity. */
+html.gsap-loading [data-fade] {
+  opacity: 0;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

@@ -33,8 +33,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${dmSans.variable} ${playfair.variable} font-sans`}>
+        {/* Runs before first paint: flags the document so CSS can pre-hide the
+            load-fade elements, preventing the SSR content from flashing visible
+            before GSAP's entrance animation runs. Skipped under reduced motion
+            (no fade there), and only ever hides content when JS is alive — if
+            the script or JS fails, the flag is never set and everything shows. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(!matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('gsap-loading')}}catch(e){}",
+          }}
+        />
         <SmoothScroll />
         {children}
 

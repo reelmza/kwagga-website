@@ -53,6 +53,7 @@ const Nav = () => {
   return (
     <nav
       ref={nav}
+      data-fade
       className="fixed top-0 left-0 z-60 w-full bg-bg/70 backdrop-blur-xs supports-backdrop-filter:bg-transparent max-[720px]:hidden"
     >
       <ul className="flex items-center justify-center gap-5 py-6 lg:gap-10">

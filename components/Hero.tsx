@@ -23,7 +23,7 @@ const Hero = () => {
       ref={section}
       className="relative flex min-h-svh items-center justify-center overflow-hidden px-5 text-center sm:px-8"
     >
-      <div ref={root} className="relative text-sm">
+      <div ref={root} data-fade className="relative text-sm">
         <p className="font-serif text-5xl font-semibold leading-none tracking-tight">
           Hello, I am Moses Kwágga
         </p>

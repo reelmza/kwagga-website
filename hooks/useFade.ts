@@ -21,7 +21,14 @@ export function useFadeIn(target: Ref, { duration = 2 }: { duration?: number } =
   useGSAP(
     () => {
       gsap.matchMedia().add(ALLOW_MOTION, () => {
-        gsap.from(target.current, { opacity: 0, ease: "power1.inOut", duration });
+        // Explicit fromTo (not `from`): `from` animates to the element's current
+        // value, which the pre-paint anti-flash CSS forces to opacity 0 — that
+        // would animate 0 → 0 and leave the element blank. Pin the target to 1.
+        gsap.fromTo(
+          target.current,
+          { opacity: 0 },
+          { opacity: 1, ease: "power1.inOut", duration },
+        );
       });
     },
     { scope: target },

@@ -22,9 +22,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Moses Kwagga — Frontend Engineer & Cyber-Security Analyst",
+  title: "Moses Kwagga - Software Engineer & Cyber-Security Analyst",
   description:
-    "Portfolio of Moses Kwagga — a frontend engineer who treats security as part of the craft. Selected work, stack, and contact.",
+    "Portfolio of Moses Kwagga — a Software engineer who treats security as part of the craft. Selected work, stack, and contact.",
 };
 
 export default function RootLayout({

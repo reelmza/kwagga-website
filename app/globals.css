@@ -48,7 +48,7 @@
   body {
     background-color: var(--color-bg);
     /* Site-wide warm gradient, viewport-locked so it stays consistent on scroll. */
-    background-image: linear-gradient(150deg, #f7f6f4 0%, #f4f0eb 45%, #f1ebe3 100%);
+    /* background-image: linear-gradient(150deg, #f7f6f4 0%, #f4f0eb 45%, #f1ebe3 100%); */
     background-attachment: fixed;
     color: var(--color-ink);
     font-family: var(--font-sans);

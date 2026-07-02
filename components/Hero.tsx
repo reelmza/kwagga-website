@@ -24,10 +24,12 @@ const Hero = () => {
       className="relative flex min-h-svh items-center justify-center overflow-hidden px-5 text-center sm:px-8"
     >
       <div ref={root} data-fade className="relative text-sm">
-        <p className="font-serif text-5xl font-semibold leading-none tracking-tight">
+        <p className="font-serif text-2xl font-semibold leading-none tracking-tight sm:text-4xl md:text-5xl">
           Hello, I am Moses Kwágga
         </p>
-        <p className="mt-3 font-light text-lg">A JavaScript web developer.</p>
+        <p className="mt-3 font-light text-base sm:text-lg">
+          A Full-stack web developer.
+        </p>
       </div>
     </section>
   );

@@ -23,7 +23,7 @@ export function Contact() {
       </h2>
 
       <div className="flex flex-wrap items-baseline gap-x-14 gap-y-4">
-        <EmailLink user="hello" domain="kwagga.dev" />
+        <EmailLink user="jessemoses71" domain="gmail.com" />
         <div className="flex gap-7">
           {SOCIALS.map((s) => (
             <a

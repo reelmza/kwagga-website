@@ -33,7 +33,7 @@ export const projects: Project[] = [
     year: "2026",
     href: "#",
     previewLabel: "[ oayastech cbt ]",
-    previewImage: "/images/featured-projects/oayastech.png",
+    previewImage: "/images/featured-projects/ebsu1.png",
     aspect: "desktop",
     lightBox: [
       "/images/featured-projects/ebsu1.png",
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     year: "2025",
     href: "https://saukipay.net",
     previewLabel: "[ saukipay portfolios ]",
-    previewImage: "/images/featured-projects/sauki.png",
+    previewImage: "/images/featured-projects/saukipay4.png",
     aspect: "mobile",
     lightBox: [
       "/images/featured-projects/saukipay1.png",

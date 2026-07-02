@@ -55,7 +55,7 @@ const Projects = () => {
     <div
       ref={section}
       id="projects"
-      className="relative overflow-hidden p-8 lg:p-30 lg:px-40 w-full min-h-svh bg-white flex flex-col"
+      className="relative overflow-hidden p-8 lg:p-30 lg:px-40 w-full min-h-svh bg-[#f0efeb] flex flex-col"
     >
       {/* Section Title */}
       <div className="font-serif text-3xl font-bold sm:text-4xl lg:w-1/3 lg:text-5xl">
@@ -115,7 +115,7 @@ const Projects = () => {
           );
 
           const shared =
-            "group mb-6 block w-full break-inside-avoid rounded-lg border border-line p-3 text-left outline-none transition-colors hover:border-ink/20 focus-visible:outline-none";
+            "group mb-6 block w-full break-inside-avoid rounded-lg border border-line bg-white p-3 text-left shadow-xs outline-none transition hover:border-ink/20 hover:shadow-sm focus-visible:outline-none";
 
           // Projects with a lightBox open the gallery; the rest link to `href`.
           return openable ? (

@@ -22,9 +22,29 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Moses Kwagga - Software Engineer & Cyber-Security Analyst",
+  // Base URL so file-based OG/Twitter images resolve to absolute URLs in prod.
+  // Edit to your real domain.
+  metadataBase: new URL("https://kwagga.vercel.app"),
+  title: "Moses Kwagga - Full-stack Web Developer",
   description:
-    "Portfolio of Moses Kwagga — a Software engineer who treats security as part of the craft. Selected work, stack, and contact.",
+    "Building real-world solutions for bussiness and individuals with a focus on performance, accessibility, and user experience.",
+  openGraph: {
+    title: "Moses Kwagga - Full-stack Web Developer",
+    description:
+      "Building real-world solutions for bussiness and individuals with a focus on performance, accessibility, and user experience.",
+    url: "https://kwagga.vercel.app",
+    siteName: "Moses Kwagga",
+    type: "website",
+    // opengraph-image.png / opengraph-image.alt.txt in app/ are picked up
+    // automatically — no need to list images here.
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Moses Kwagga - Full-stack Web Developer",
+    description:
+      "Building real-world solutions for bussiness and individuals with a focus on performance, accessibility, and user experience.",
+    // twitter-image.png in app/ is picked up automatically.
+  },
 };
 
 export default function RootLayout({

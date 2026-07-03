@@ -25,7 +25,7 @@ const Hero = () => {
     >
       <div ref={root} data-fade className="relative text-sm">
         <p className="font-serif text-2xl font-semibold leading-none tracking-tight sm:text-4xl md:text-5xl">
-          Hello, I am Moses Kwágga
+          Hello, I am Moses <span className="">Kwágga</span>
         </p>
         <p className="mt-3 font-light text-base sm:text-lg">
           A Full-stack web developer.

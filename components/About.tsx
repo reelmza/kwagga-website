@@ -44,7 +44,7 @@ const About = () => {
       {/* Section Description */}
       <div className="mt-4 lg:mt-8 lg:w-3/8 text-base sm:text-lg lg:text-xl text-text-mute">
         From designing eye catching apps to implementing complex bussiness
-        logics.
+        logics, I've got the tools for it.
       </div>
 
       {/* Tools & stack */}

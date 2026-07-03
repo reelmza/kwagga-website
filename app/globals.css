@@ -29,10 +29,12 @@
   --color-marquee: #e4e4e4;
   --color-placeholder-caption: #888888;
 
-  /* Yellow accent. `on-accent` is the text color to sit on a yellow fill. */
-  --color-accent: #ffd400;
-  --color-accent-strong: #f2c200;
-  --color-on-accent: #0d0d0d;
+  /* Dark-orange accent, tuned to read on the light background. `accent-strong`
+     is deeper for hover/small text; `on-accent` is the text color on an
+     accent fill. */
+  --color-accent: #fb5607;
+  --color-accent-strong: #e24400;
+  --color-on-accent: #fafafa;
 
 
   --animate-marquee: marquee 40s linear infinite;

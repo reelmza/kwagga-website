@@ -39,12 +39,12 @@ const Clients = () => {
       className="relative overflow-hidden p-8 lg:p-30 lg:px-40 w-full min-h-svh bg-white flex flex-col"
     >
       {/* Section Title */}
-      <div className="font-serif text-3xl text-right font-bold sm:text-4xl lg:w-1/3 lg:text-5xl self-end">
+      <div className="font-serif text-3xl font-bold sm:text-4xl lg:w-1/3 lg:text-5xl">
         Clients I have worked with.
       </div>
 
       {/* Section Description */}
-      <div className="mt-4 lg:mt-8 lg:w-3/8 text-base sm:text-lg lg:text-xl text-text-mute text-right self-end">
+      <div className="mt-4 lg:mt-8 lg:w-3/8 text-base sm:text-lg lg:text-xl text-text-mute">
         A gallery of industry icons and individuals I have worked with over the
         years.
       </div>
@@ -84,7 +84,7 @@ const Clients = () => {
           <li
             key={client.name}
             onMouseEnter={() => setActive(client)}
-            className="group relative flex aspect-3/2 items-center justify-center p-6 sm:p-8 lg:cursor-pointer"
+            className="group relative flex aspect-3/2 items-center justify-start py-6 sm:py-8 lg:cursor-pointer"
           >
             <Image
               src={client.image}

@@ -13,6 +13,21 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    index: "09",
+    title: "Pagedeck App",
+    description: "PDF Management tool",
+    tags: "Frontend",
+    year: "2026",
+    href: "https://pagedeck.vercel.app",
+    previewLabel: "[ pagedeck tools ]",
+    previewImage: "/images/featured-projects/pagedeck1.png",
+    aspect: "desktop",
+    lightBox: [
+      "/images/featured-projects/pagedeck1.png",
+      "/images/featured-projects/pagedeck2.webp",
+    ],
+  },
+  {
     index: "01",
     title: "Timeless Di-zin",
     description: "Brand & portfolio site — Architectural firm in Abuja.",

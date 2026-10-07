@@ -55,7 +55,7 @@ const Projects = () => {
     <div
       ref={section}
       id="projects"
-      className="relative overflow-hidden p-8 lg:p-30 lg:px-40 w-full min-h-svh bg-[#f0efeb] flex flex-col"
+      className="relative scroll-mt-22.5 overflow-hidden p-8 lg:p-30 lg:px-40 w-full min-h-svh bg-section-alt flex flex-col"
     >
       {/* Section Title */}
       <div className="font-serif text-3xl font-bold sm:text-4xl lg:w-1/3 lg:text-5xl">

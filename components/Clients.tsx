@@ -36,7 +36,8 @@ const Clients = () => {
   return (
     <div
       ref={section}
-      className="relative overflow-hidden p-8 lg:p-30 lg:px-40 w-full min-h-svh bg-white flex flex-col"
+      id="clients"
+      className="relative scroll-mt-22.5 overflow-hidden p-8 lg:p-30 lg:px-40 w-full min-h-svh bg-white flex flex-col"
     >
       {/* Section Title */}
       <div className="font-serif text-3xl font-bold sm:text-4xl lg:w-1/3 lg:text-5xl">
@@ -59,15 +60,17 @@ const Clients = () => {
         {/* Re-keyed per client so the text re-fades when you move between logos. */}
         <div
           key={active?.name}
-          className="h-full flex flex-wrap items-center gap-x-6 gap-y-1"
+          className="h-full flex items-center gap-x-6"
         >
-          <h3 className="font-serif text-2xl font-bold leading-none">
+          {/* Single line: long names truncate rather than wrap out of the
+              fixed-height slot onto the grid below. */}
+          <h3 className="min-w-0 truncate font-serif text-2xl font-bold leading-normal">
             {active?.name}
           </h3>
-          <p className="text-text-mute leading-none mt-1">
+          <p className="shrink-0 text-text-mute leading-none mt-1">
             {active?.clientType.trim()}
           </p>
-          <p className="flex items-center gap-1.5 text-sm text-text-mute mt-1">
+          <p className="flex shrink-0 items-center gap-1.5 text-sm text-text-mute mt-1">
             <MapPin size={14} className="shrink-0" />
             {active?.location}
           </p>

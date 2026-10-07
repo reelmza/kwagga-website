@@ -23,16 +23,17 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   // Base URL so file-based OG/Twitter images resolve to absolute URLs in prod.
-  // Edit to your real domain.
-  metadataBase: new URL("https://kwagga.vercel.app"),
+  metadataBase: new URL("https://kwagga.dev"),
+  // Canonical points search engines at kwagga.dev, not the vercel.app alias.
+  alternates: { canonical: "/" },
   title: "Moses Kwagga - Full-stack Web Developer",
   description:
-    "Building real-world solutions for bussiness and individuals with a focus on performance, accessibility, and user experience.",
+    "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.",
   openGraph: {
     title: "Moses Kwagga - Full-stack Web Developer",
     description:
-      "Building real-world solutions for bussiness and individuals with a focus on performance, accessibility, and user experience.",
-    url: "https://kwagga.vercel.app",
+      "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.",
+    url: "https://kwagga.dev",
     siteName: "Moses Kwagga",
     type: "website",
     // opengraph-image.png / opengraph-image.alt.txt in app/ are picked up
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Moses Kwagga - Full-stack Web Developer",
     description:
-      "Building real-world solutions for bussiness and individuals with a focus on performance, accessibility, and user experience.",
+      "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.",
     // twitter-image.png in app/ is picked up automatically.
   },
 };
@@ -73,7 +74,7 @@ export default function RootLayout({
             scroll; multiply textures light areas while leaving dark text intact. */}
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 z-50 opacity-[0.38] mix-blend-multiply"
+          className="pointer-events-none fixed inset-0 z-50 opacity-[0.38] mix-blend-multiply print:hidden"
           style={{ backgroundImage: GRAIN, backgroundSize: "200px 200px" }}
         />
       </body>

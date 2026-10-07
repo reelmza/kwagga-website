@@ -13,7 +13,38 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    index: "09",
+    index: "11",
+    title: "U & I Medics",
+    description: "Physiotherapy clinic website and Clinic Management Software.",
+    tags: "Frontend",
+    year: "2026",
+    href: "https://uandimedics.com",
+    previewLabel: "[ u & i medics ]",
+    previewImage: "/images/featured-projects/uandimedics1.png",
+    aspect: "desktop",
+    lightBox: [
+      "/images/featured-projects/uandimedics1.png",
+      "/images/featured-projects/uandimedics2.png",
+      "/images/featured-projects/uandimedics3.png",
+    ],
+  },
+  {
+    index: "12",
+    title: "openCBT",
+    description: "Computer-based testing software for Nigerian universities.",
+    tags: "Frontend",
+    year: "2026",
+    href: "#",
+    previewLabel: "[ opencbt ]",
+    previewImage: "/images/featured-projects/opencbt1.png",
+    aspect: "desktop",
+    lightBox: [
+      "/images/featured-projects/opencbt1.png",
+      "/images/featured-projects/opencbt2.png",
+    ],
+  },
+  {
+    index: "10",
     title: "Pagedeck App",
     description: "PDF Management tool",
     tags: "Frontend",
@@ -98,7 +129,7 @@ export const projects: Project[] = [
     index: "05",
     title: "SBA Reads App",
     description:
-      "Online reading and publishing platform for Nigerian writters.",
+      "Online reading and publishing platform for Nigerian writers.",
     tags: "Frontend",
     year: "2025",
     href: "https://sbareads.com",

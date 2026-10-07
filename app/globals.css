@@ -21,6 +21,8 @@
   --color-line: #e6e6e6;
   --color-line-2: #ededed;
   --color-row-hover: #ffffff;
+  /* Warm off-white for alternating section bands (e.g. Projects). */
+  --color-section-alt: #f0efeb;
   --color-placeholder-a: #ececec;
   --color-placeholder-b: #f4f4f4;
   --color-trace-pattern: #ededed;
@@ -71,6 +73,12 @@
    the client mounts, after GSAP has set its own inline opacity. */
 html.gsap-loading [data-fade] {
   opacity: 0;
+}
+
+/* Browser printing (e.g. /cv → Print) uses A4 to match the PDF download. */
+@page {
+  size: A4;
+  margin: 16mm;
 }
 
 @keyframes marquee {

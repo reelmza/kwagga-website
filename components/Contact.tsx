@@ -11,7 +11,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-22.5 border-t border-line px-5 pt-24 pb-0 sm:px-8"
+      className="scroll-mt-22.5 border-t border-line px-8 pt-24 pb-0 lg:px-40 lg:pt-30"
     >
       <span className="font-mono text-xs uppercase tracking-[1.5px] text-meta">
         Contact

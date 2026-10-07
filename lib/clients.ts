@@ -66,4 +66,16 @@ export const clients: Client[] = [
     location: "Yola, Nigeria",
     image: "/images/clients/motosprint.png",
   },
+  {
+    name: "U & I Medics",
+    clientType: "Rehabilitation Clinic",
+    location: "Mabushi, Abuja, Nigeria",
+    image: "/images/clients/umedics.png",
+  },
+  {
+    name: "Adamawa State College of Health Science and Technology",
+    clientType: "Health Sciences Institution",
+    location: "Michika, Adamawa State, Nigeria",
+    image: "/images/clients/ascoht.png",
+  },
 ];

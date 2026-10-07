@@ -44,7 +44,7 @@ app/
   cv/
     page.tsx          // /cv — shareable web CV (server) with "Download PDF" button
     download/route.ts // /cv/download — PDF via @react-pdf/renderer, force-static (built once)
-    opengraph-image.tsx, twitter-image.tsx  // CV-specific dark share image (next/og)
+    opengraph-image.tsx, twitter-image.tsx  // CV-specific share image (next/og)
 components/
   Nav.tsx             // fixed headroom nav (hides on scroll down) + mobile hamburger overlay (client)
   Hero.tsx            // centered greeting; fades in on load, fades out on scroll (client)

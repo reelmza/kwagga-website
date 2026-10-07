@@ -12,6 +12,8 @@ export const cvOgSize = { width: 1200, height: 630 };
 // Mirrors the @theme tokens in app/globals.css (satori can't read CSS vars).
 const INK = "#0d0d0d";
 const BG = "#fafafa";
+const INK_SOFT = "#262626";
+const MUTE = "#6b6b6b";
 const ACCENT = "#fb5607";
 
 const font = (file: string) => readFile(join(process.cwd(), "assets/fonts", file));
@@ -33,12 +35,12 @@ export async function renderCvOg() {
           display: "flex",
           position: "relative",
           overflow: "hidden",
-          backgroundColor: INK,
+          backgroundColor: BG,
           // Faint editorial grid.
           backgroundImage:
-            "linear-gradient(rgba(250,250,250,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(250,250,250,0.05) 1px, transparent 1px)",
+            "linear-gradient(rgba(13,13,13,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(13,13,13,0.05) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
-          color: BG,
+          color: INK,
           fontFamily: "DM Sans",
         }}
       >
@@ -77,7 +79,7 @@ export async function renderCvOg() {
                 fontWeight: 500,
                 letterSpacing: 5,
                 textTransform: "uppercase",
-                color: "#bdbdbd",
+                color: MUTE,
               }}
             >
               Curriculum Vitae
@@ -106,29 +108,17 @@ export async function renderCvOg() {
             >
               Kwágga
             </div>
-            <div style={{ marginTop: 22, fontSize: 34, color: "#e6e6e6" }}>
+            <div style={{ marginTop: 22, fontSize: 34, color: INK_SOFT }}>
               {cv.role}
             </div>
-            <div style={{ marginTop: 10, fontSize: 24, color: "#999999" }}>
+            <div style={{ marginTop: 10, fontSize: 24, color: MUTE }}>
               {`7 years · Security-first · ${clients.length}+ clients`}
             </div>
           </div>
 
           {/* Footer */}
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <div style={{ fontSize: 24, fontWeight: 500 }}>kwagga.dev/cv</div>
-            <div
-              style={{
-                display: "flex",
-                fontSize: 20,
-                padding: "8px 18px",
-                borderRadius: 999,
-                border: "1.5px solid rgba(250,250,250,0.35)",
-                color: "#e6e6e6",
-              }}
-            >
-              View · Download PDF
-            </div>
+          <div style={{ display: "flex", fontSize: 24, fontWeight: 500 }}>
+            kwagga.dev/cv
           </div>
         </div>
       </div>

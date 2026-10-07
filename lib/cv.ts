@@ -36,7 +36,6 @@ export const cv = {
       ],
     },
     {
-      // TODO(confirm): freelance title and start year (2019 inferred from "seven years").
       role: "Freelance Full-stack Developer",
       org: "Self-employed",
       period: "2019 — Present",

@@ -1,24 +1,42 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { cv } from "@/lib/cv";
 import { clients } from "@/lib/clients";
 
-// Shared by app/cv/opengraph-image.tsx and app/cv/twitter-image.tsx.
+// Shared share-image design (light, editorial grid, oversized orange italic
+// glyph). Used by the site-wide image in app/ and the CV image in app/cv/.
 
-export const cvOgAlt = `${cv.name} — Curriculum Vitae · ${cv.role}`;
-export const cvOgSize = { width: 1200, height: 630 };
+export const ogSize = { width: 1200, height: 630 };
 
 // Mirrors the @theme tokens in app/globals.css (satori can't read CSS vars).
 const INK = "#0d0d0d";
-const BG = "#fafafa";
 const INK_SOFT = "#262626";
 const MUTE = "#6b6b6b";
+const BG = "#fafafa";
 const ACCENT = "#fb5607";
 
 const font = (file: string) => readFile(join(process.cwd(), "assets/fonts", file));
 
-export async function renderCvOg() {
+type OgOptions = {
+  /** Small uppercase label above the name. */
+  eyebrow: string;
+  /** Large orange italic glyph bleeding off the right edge. */
+  glyph: string;
+  /** Position/size tweaks for the glyph (different letters need different fits). */
+  glyphStyle?: { fontSize?: number; right?: number; bottom?: number };
+  role: string;
+  tagline: string;
+  url: string;
+};
+
+export async function renderOg({
+  eyebrow,
+  glyph,
+  glyphStyle,
+  role,
+  tagline,
+  url,
+}: OgOptions) {
   const [playfair, playfairItalic, dmSans, dmSansMedium] = await Promise.all([
     font("PlayfairDisplay-Bold.ttf"),
     font("PlayfairDisplay-BoldItalic.ttf"),
@@ -44,21 +62,20 @@ export async function renderCvOg() {
           fontFamily: "DM Sans",
         }}
       >
-        {/* Oversized "CV" bleeding off the right edge. */}
         <div
           style={{
             position: "absolute",
-            right: -30,
-            bottom: -150,
+            right: glyphStyle?.right ?? -30,
+            bottom: glyphStyle?.bottom ?? -150,
             fontFamily: "Playfair",
             fontStyle: "italic",
-            fontSize: 560,
+            fontSize: glyphStyle?.fontSize ?? 560,
             lineHeight: 1,
             letterSpacing: -20,
             color: ACCENT,
           }}
         >
-          CV
+          {glyph}
         </div>
 
         <div
@@ -82,7 +99,7 @@ export async function renderCvOg() {
                 color: MUTE,
               }}
             >
-              Curriculum Vitae
+              {eyebrow}
             </div>
           </div>
 
@@ -109,22 +126,22 @@ export async function renderCvOg() {
               Kwágga
             </div>
             <div style={{ marginTop: 22, fontSize: 34, color: INK_SOFT }}>
-              {cv.role}
+              {role}
             </div>
             <div style={{ marginTop: 10, fontSize: 24, color: MUTE }}>
-              {`7 years · Security-first · ${clients.length}+ clients`}
+              {tagline}
             </div>
           </div>
 
           {/* Footer */}
           <div style={{ display: "flex", fontSize: 24, fontWeight: 500 }}>
-            kwagga.dev/cv
+            {url}
           </div>
         </div>
       </div>
     ),
     {
-      ...cvOgSize,
+      ...ogSize,
       fonts: [
         { name: "Playfair", data: playfair, weight: 700, style: "normal" },
         { name: "Playfair", data: playfairItalic, weight: 700, style: "italic" },
@@ -134,3 +151,29 @@ export async function renderCvOg() {
     },
   );
 }
+
+// ── Presets ────────────────────────────────────────────────────────────────
+
+const ROLE = "Full-stack Web Developer";
+const CLIENTS = `${clients.length}+ clients`;
+
+export const siteOgAlt = `Moses Kwagga — ${ROLE}`;
+export const renderSiteOg = () =>
+  renderOg({
+    eyebrow: "Portfolio",
+    glyph: "K",
+    glyphStyle: { fontSize: 720, right: 10, bottom: -210 },
+    role: ROLE,
+    tagline: `Web & mobile · Security-first · ${CLIENTS}`,
+    url: "kwagga.dev",
+  });
+
+export const cvOgAlt = `Moses Kwagga — Curriculum Vitae · ${ROLE}`;
+export const renderCvOg = () =>
+  renderOg({
+    eyebrow: "Curriculum Vitae",
+    glyph: "CV",
+    role: ROLE,
+    tagline: `7 years · Security-first · ${CLIENTS}`,
+    url: "kwagga.dev/cv",
+  });

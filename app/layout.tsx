@@ -3,6 +3,7 @@ import { DM_Sans, Playfair_Display } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { SITE_URL } from "@/lib/site";
 
 // Inline fractal-noise SVG → a fine grain that reads as paper / sand. Rendered
 // once as a fixed full-page overlay so the texture covers the entire site.
@@ -23,7 +24,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   // Base URL so file-based OG/Twitter images resolve to absolute URLs in prod.
-  metadataBase: new URL("https://kwagga.dev"),
+  metadataBase: new URL(SITE_URL),
   // Canonical points search engines at kwagga.dev, not the vercel.app alias.
   alternates: { canonical: "/" },
   title: "Moses Kwagga - Full-stack Web Developer",
@@ -33,10 +34,10 @@ export const metadata: Metadata = {
     title: "Moses Kwagga - Full-stack Web Developer",
     description:
       "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.",
-    url: "https://kwagga.dev",
+    url: SITE_URL,
     siteName: "Moses Kwagga",
     type: "website",
-    // opengraph-image.png / opengraph-image.alt.txt in app/ are picked up
+    // app/opengraph-image.tsx (generated via lib/og.tsx) is picked up
     // automatically — no need to list images here.
   },
   twitter: {
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     title: "Moses Kwagga - Full-stack Web Developer",
     description:
       "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.",
-    // twitter-image.png in app/ is picked up automatically.
+    // app/twitter-image.tsx is picked up automatically.
   },
 };
 

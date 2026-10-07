@@ -40,11 +40,13 @@ app/
   layout.tsx          // fonts, metadata (OG/Twitter), pre-paint gsap-loading script, <SmoothScroll/>, grain overlay
   page.tsx            // composes: Nav, Hero, About, WhyMe, Clients, Projects, Contact
   globals.css         // @import tailwindcss, @theme tokens, base layer, keyframes, reduced-motion
-  opengraph-image.png / .alt.txt, twitter-image.png, favicon.ico  // file-based metadata
+  opengraph-image.tsx, twitter-image.tsx  // site-wide share image (generated, lib/og.tsx)
+  favicon.ico
+  sitemap.ts, robots.ts // /sitemap.xml (lists / and /cv — add new pages here) + /robots.txt
   cv/
     page.tsx          // /cv — shareable web CV (server) with "Download PDF" button
     download/route.ts // /cv/download — PDF via @react-pdf/renderer, force-static (built once)
-    opengraph-image.tsx, twitter-image.tsx  // CV-specific share image (next/og)
+    opengraph-image.tsx, twitter-image.tsx  // CV share image (overrides the site one)
 components/
   Nav.tsx             // fixed headroom nav (hides on scroll down) + mobile hamburger overlay (client)
   Hero.tsx            // centered greeting; fades in on load, fades out on scroll (client)
@@ -63,7 +65,8 @@ lib/
   tools.ts            // tools & stack chips (icons in public/images/tools)
   cv.ts               // CV content — single source for /cv page, PDF and OG image
   cv-pdf.tsx          // react-pdf A4 document (server-only)
-  cv-og.tsx           // shared ImageResponse renderer for the CV OG/Twitter images
+  site.ts             // SITE_URL (https://kwagga.dev) — used by metadata, sitemap, robots
+  og.tsx              // shared share-image renderer (light grid + big orange glyph) + site/CV presets
 assets/fonts/         // static Playfair Display + DM Sans TTFs for react-pdf and next/og
                       // (they can't use next/font; woff2/variable fonts aren't supported)
 public/images/        // assets/, clients/, featured-projects/, tools/
@@ -90,7 +93,7 @@ public/images/        // assets/, clients/, featured-projects/, tools/
 - Edit content in `lib/cv.ts`; projects (by title) and clients are pulled from `lib/projects.ts` / `lib/clients.ts`.
 - The PDF must stay **one A4 page** and is tightly packed — it shows only the first `PDF_PROJECTS` (4) projects. After adding content, re-check the page count; trim projects or spacing in `lib/cv-pdf.tsx` if it spills.
 - PDF fonts only contain Latin glyphs — avoid symbols like arrows (↗) in PDF text.
-- react-pdf/satori can't read CSS variables, so `cv-pdf.tsx` / `cv-og.tsx` mirror the color tokens as hex constants — keep them in sync with `globals.css`.
+- react-pdf/satori can't read CSS variables, so `cv-pdf.tsx` / `og.tsx` mirror the color tokens as hex constants — keep them in sync with `globals.css`.
 
 ## Responsiveness
 
@@ -107,4 +110,4 @@ public/images/        // assets/, clients/, featured-projects/, tools/
 
 - Email `jessemoses71@gmail.com` (split into user/domain for `EmailLink`).
 - GitHub `github.com/reelmza`, LinkedIn `linkedin.com/in/moseskwagga`, X `x.com/moseskwagga`.
-- Production URL in `metadataBase`: `https://kwagga.dev`.
+- Production URL: `https://kwagga.dev` (`SITE_URL` in `lib/site.ts`).

@@ -41,7 +41,8 @@ app/
   page.tsx            // composes: Nav, Hero, About, WhyMe, Clients, Projects, Contact
   globals.css         // @import tailwindcss, @theme tokens, base layer, keyframes, reduced-motion
   opengraph-image.tsx, twitter-image.tsx  // site-wide share image (generated, lib/og.tsx)
-  favicon.ico
+  favicon.ico, icon1.png (32px), icon2.svg, apple-icon.png  // file-based icons (white Playfair "K" on ink-soft)
+  manifest.ts         // /manifest.webmanifest (icons in public/icon-192.png, icon-512.png)
   sitemap.ts, robots.ts // /sitemap.xml (lists / and /cv — add new pages here) + /robots.txt
   cv/
     page.tsx          // /cv — shareable web CV (server) with "Download PDF" button
@@ -56,6 +57,7 @@ components/
   Projects.tsx        // #projects — masonry cards + lightbox gallery (images/video) (client)
   Contact.tsx         // #contact — heading, EmailLink, socials, footer (server)
   EmailLink.tsx       // client-assembled email (anti-obfuscation)
+  JsonLd.tsx          // renders a JSON-LD <script> (escapes "<")
   SmoothScroll.tsx    // Lenis init + anchor handling; clears the gsap-loading flag (client)
 hooks/
   useFade.ts          // useFadeIn (load fade) + useScrollFade (scrubbed in/out fade)
@@ -65,7 +67,8 @@ lib/
   tools.ts            // tools & stack chips (icons in public/images/tools)
   cv.ts               // CV content — single source for /cv page, PDF and OG image
   cv-pdf.tsx          // react-pdf A4 document (server-only)
-  site.ts             // SITE_URL (https://kwagga.dev) — used by metadata, sitemap, robots
+  site.ts             // SITE_URL, title/description, X handle, locale, theme color — shared by metadata/sitemap/robots/manifest
+  structured-data.ts  // schema.org JSON-LD (WebSite + Person on /, ProfilePage on /cv), built from lib/cv.ts
   og.tsx              // shared share-image renderer (light grid + big orange glyph) + site/CV presets
 assets/fonts/         // static Playfair Display + DM Sans TTFs for react-pdf and next/og
                       // (they can't use next/font; woff2/variable fonts aren't supported)
@@ -80,6 +83,7 @@ public/images/        // assets/, clients/, featured-projects/, tools/
 
 ## Conventions & decisions
 
+- **Headings / SEO:** exactly one `<h1>` per page (Hero name on /, the name on /cv); section titles are `<h2>`, items within them `<h3>`. Nested `openGraph`/`twitter` metadata in a page *replaces* the root layout's, so repeat shared fields (locale, siteName, X handle) from `lib/site.ts`.
 - **Server vs client:** keep components server-side unless they need state/effects/interaction/GSAP. Currently server: `Contact`. Everything else animated is client.
 - **Fades:** use `hooks/useFade.ts`. `useFadeIn` for above-the-fold/fixed elements (Hero text, Nav); `useScrollFade` for sections (scrubbed fade in on enter, out on leave). List children use a `gsap.from` stagger with a ScrollTrigger.
 - **Anti-flash:** a blocking `<head>` script adds `html.gsap-loading`, which pre-hides `[data-fade]` elements until mount; `SmoothScroll` removes the flag. Use `fromTo` (not `from`) for anything marked `data-fade`. Skipped under reduced motion.

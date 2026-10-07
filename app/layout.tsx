@@ -1,9 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { SITE_URL } from "@/lib/site";
+import {
+  LOCALE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+  THEME_COLOR,
+  X_HANDLE,
+} from "@/lib/site";
 
 // Inline fractal-noise SVG → a fine grain that reads as paper / sand. Rendered
 // once as a fixed full-page overlay so the texture covers the entire site.
@@ -25,28 +33,36 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   // Base URL so file-based OG/Twitter images resolve to absolute URLs in prod.
   metadataBase: new URL(SITE_URL),
-  // Canonical points search engines at kwagga.dev, not the vercel.app alias.
+  // Canonical points search engines at kwagga.dev, not the www/vercel.app aliases.
   alternates: { canonical: "/" },
-  title: "Moses Kwagga - Full-stack Web Developer",
-  description:
-    "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
   openGraph: {
-    title: "Moses Kwagga - Full-stack Web Developer",
-    description:
-      "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
-    siteName: "Moses Kwagga",
+    siteName: SITE_NAME,
+    locale: LOCALE,
     type: "website",
     // app/opengraph-image.tsx (generated via lib/og.tsx) is picked up
     // automatically — no need to list images here.
   },
   twitter: {
     card: "summary_large_image",
-    title: "Moses Kwagga - Full-stack Web Developer",
-    description:
-      "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.",
+    site: X_HANDLE,
+    creator: X_HANDLE,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     // app/twitter-image.tsx is picked up automatically.
   },
+  // Icons (favicon.ico, icon1.png, icon2.svg, apple-icon.png) and the web
+  // manifest (manifest.ts) are file-based in app/ and linked automatically.
+};
+
+export const viewport: Viewport = {
+  themeColor: THEME_COLOR,
 };
 
 export default function RootLayout({

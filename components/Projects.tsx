@@ -58,9 +58,9 @@ const Projects = () => {
       className="relative scroll-mt-22.5 overflow-hidden p-8 lg:p-30 lg:px-40 w-full min-h-svh bg-section-alt flex flex-col"
     >
       {/* Section Title */}
-      <div className="font-serif text-3xl font-bold sm:text-4xl lg:w-1/3 lg:text-5xl">
+      <h2 className="font-serif text-3xl font-bold sm:text-4xl lg:w-1/3 lg:text-5xl">
         Featured Projects
-      </div>
+      </h2>
 
       {/* Section Description */}
       <div className="mt-4 lg:mt-8 lg:w-3/8 text-base sm:text-lg lg:text-xl text-text-mute">

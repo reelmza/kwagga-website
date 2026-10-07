@@ -2,14 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Download, MapPin } from "lucide-react";
 import { EmailLink } from "@/components/EmailLink";
+import { JsonLd } from "@/components/JsonLd";
+import { cvJsonLd } from "@/lib/structured-data";
 import { cv, cvClients, cvProjects, linkLabel } from "@/lib/cv";
+import { LOCALE, SITE_NAME, X_HANDLE } from "@/lib/site";
 
 const TITLE = "Moses Kwagga — CV";
 const DESCRIPTION =
   "CV of Moses Kwagga, full-stack web developer with seven years of experience and a cyber-security background. View online or download as PDF.";
 
 // Its own OG/Twitter image lives alongside in opengraph-image.tsx /
-// twitter-image.tsx, overriding the site-wide one.
+// twitter-image.tsx, overriding the site-wide one. Nested openGraph/twitter
+// objects replace (not merge with) the root layout's, so repeat shared fields.
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
@@ -18,11 +22,14 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/cv",
-    siteName: "Moses Kwagga",
+    siteName: SITE_NAME,
+    locale: LOCALE,
     type: "profile",
   },
   twitter: {
     card: "summary_large_image",
+    site: X_HANDLE,
+    creator: X_HANDLE,
     title: TITLE,
     description: DESCRIPTION,
   },
@@ -41,6 +48,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 export default function CvPage() {
   return (
     <main className="min-h-svh bg-bg px-5 py-6 sm:px-8 sm:py-10 lg:py-16 print:bg-white print:p-0">
+      <JsonLd data={cvJsonLd} />
       {/* Top bar — back to the portfolio + PDF download. Hidden when printing. */}
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 print:hidden">
         <Link

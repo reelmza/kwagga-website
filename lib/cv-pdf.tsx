@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from "@react-pdf/renderer";
-import { cv, cvClients, cvEmail, cvProjects, linkLabel } from "@/lib/cv";
+import { cv, cvClients, cvProjects, linkLabel } from "@/lib/cv";
 
 // Server-only: rendered to a PDF by app/cv/download/route.ts.
 
@@ -83,6 +83,15 @@ const s = StyleSheet.create({
     color: C.inkSoft,
     marginTop: 10,
   },
+  availability: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 7,
+    fontSize: 9,
+    fontWeight: 500,
+    color: C.ink,
+  },
+  dot: { width: 5, height: 5, borderRadius: 2.5, backgroundColor: C.accent, marginRight: 6 },
   contact: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -156,9 +165,13 @@ export function CvDocument() {
         <Text style={s.label}>Curriculum Vitae</Text>
         <Text style={s.name}>{cv.name}</Text>
         <Text style={s.role}>{cv.role}</Text>
+        <View style={s.availability}>
+          <View style={s.dot} />
+          <Text>{cv.availability}</Text>
+        </View>
         <View style={s.contact}>
-          <Link src={`mailto:${cvEmail}`} style={s.contactItem}>
-            {cvEmail}
+          <Link src={`mailto:${cv.email}`} style={s.contactItem}>
+            {cv.email}
           </Link>
           <Link src={cv.phone.href} style={s.contactItem}>
             {cv.phone.label}
@@ -229,7 +242,8 @@ export function CvDocument() {
               {cv.skills.map((g) => (
                 <View key={g.group} style={{ marginBottom: 7 }}>
                   <Text style={s.skillGroup}>{g.group}</Text>
-                  <Text style={{ color: C.mute }}>{g.items.join(" · ")}</Text>
+                  {/* NBSP keeps each "·" on the same line as the item before it. */}
+                  <Text style={{ color: C.mute }}>{g.items.join("\u00a0· ")}</Text>
                 </View>
               ))}
             </Section>

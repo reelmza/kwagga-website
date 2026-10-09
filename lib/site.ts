@@ -6,6 +6,9 @@ export const SITE_TITLE = "Moses Kwagga - Full-stack Web Developer";
 export const SITE_DESCRIPTION =
   "Building real-world solutions for businesses and individuals with a focus on performance, accessibility, and user experience.";
 
+/** Public contact email (Contact section, CV page and PDF). */
+export const EMAIL = "hello@kwagga.dev";
+
 /** X/Twitter handle for twitter:site / twitter:creator. */
 export const X_HANDLE = "@moseskwagga";
 

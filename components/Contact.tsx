@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { EmailLink } from "./EmailLink";
+import { EMAIL } from "@/lib/site";
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/reelmza" },
@@ -23,7 +23,12 @@ export function Contact() {
       </h2>
 
       <div className="flex flex-wrap items-baseline gap-x-14 gap-y-4">
-        <EmailLink user="jessemoses71" domain="gmail.com" />
+        <a
+          href={`mailto:${EMAIL}`}
+          className="border-b-2 border-accent px-1 pb-1 text-[clamp(10px,2vw,30px)] font-semibold tracking-[-0.02em] text-ink no-underline transition-colors duration-300 hover:bg-accent hover:text-on-accent"
+        >
+          {EMAIL}
+        </a>
         <div className="flex gap-7">
           {SOCIALS.map((s) => (
             <a

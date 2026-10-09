@@ -8,7 +8,7 @@ A single-page developer portfolio for **Moses Kwagga — Full-stack Web Develope
 
 - `Portfolio.dc.html` / `README.md` — the original design-reference prototype and handoff spec. **Historical reference only — do not ship or edit.** The live site has diverged (sections, fonts, accent color); the code is now the source of truth.
 - The aesthetic is **editorial**: near-white background (`#fafafa`) with white / warm off-white section bands, black ink, hairline rules, mono meta labels, serif display headings, generous whitespace, and a fixed site-wide paper-grain overlay (in `app/layout.tsx`).
-- The palette is **white, black, and dark orange** — orange (`--color-accent` `#fb5607`) is the single accent. Use it sparingly (hover states on links, `::selection`, the email underline in Contact). Don't introduce a *second* accent color without asking, and don't flood the page with orange — it's punctuation, not body color.
+- The palette is **white, black, and dark orange** — orange (`--color-accent` `#fb5607`) is the single accent. Use it sparingly (hover states on links, `::selection`, the email underline in Contact, the availability dot on /cv). Don't introduce a *second* accent color without asking, and don't flood the page with orange — it's punctuation, not body color.
 
 ## Workflow preferences (important)
 
@@ -55,8 +55,7 @@ components/
   WhyMe.tsx           // #why — three numbered reasons (client)
   Clients.tsx         // #clients — grayscale logo grid; hover shows client info on desktop (client)
   Projects.tsx        // #projects — masonry cards + lightbox gallery (images/video) (client)
-  Contact.tsx         // #contact — heading, EmailLink, socials, footer (server)
-  EmailLink.tsx       // client-assembled email (anti-obfuscation)
+  Contact.tsx         // #contact — heading, mailto link, socials, footer (server)
   JsonLd.tsx          // renders a JSON-LD <script> (escapes "<")
   SmoothScroll.tsx    // Lenis init + anchor handling; clears the gsap-loading flag (client)
 hooks/
@@ -94,7 +93,7 @@ public/images/        // assets/, clients/, featured-projects/, tools/
 
 ## CV (/cv)
 
-- Edit content in `lib/cv.ts`; projects (by title) and clients are pulled from `lib/projects.ts` / `lib/clients.ts`.
+- Edit content in `lib/cv.ts` (incl. the `availability` line under the name); projects (by title) and clients are pulled from `lib/projects.ts` / `lib/clients.ts`.
 - The PDF must stay **one A4 page** and is tightly packed — it shows only the first `PDF_PROJECTS` (4) projects. After adding content, re-check the page count; trim projects or spacing in `lib/cv-pdf.tsx` if it spills.
 - PDF fonts only contain Latin glyphs — avoid symbols like arrows (↗) in PDF text.
 - react-pdf/satori can't read CSS variables, so `cv-pdf.tsx` / `og.tsx` mirror the color tokens as hex constants — keep them in sync with `globals.css`.
@@ -112,6 +111,6 @@ public/images/        // assets/, clients/, featured-projects/, tools/
 
 ## Contact details
 
-- Email `jessemoses71@gmail.com` (split into user/domain for `EmailLink`).
+- Email `hello@kwagga.dev` (`EMAIL` in `lib/site.ts`) — a plain `mailto:` link so it works without JS (the site is on Vercel, no email obfuscation to dodge).
 - GitHub `github.com/reelmza`, LinkedIn `linkedin.com/in/moseskwagga`, X `x.com/moseskwagga`.
 - Production URL: `https://kwagga.dev` (`SITE_URL` in `lib/site.ts`).

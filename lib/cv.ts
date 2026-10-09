@@ -1,5 +1,6 @@
 import { projects, type Project } from "@/lib/projects";
 import { clients } from "@/lib/clients";
+import { EMAIL } from "@/lib/site";
 
 /**
  * Single source of truth for the CV — rendered by the /cv page, the PDF at
@@ -11,7 +12,9 @@ export const cv = {
   name: "Moses Kwagga",
   role: "Full-stack Web Developer",
   location: "Abuja, Nigeria",
-  email: { user: "jessemoses71", domain: "gmail.com" },
+  // Shown under the name — the first thing remote/foreign recruiters look for.
+  availability: "Open to remote roles (UTC+1) and relocation.",
+  email: EMAIL,
   phone: { label: "+234 814 6372 583", href: "tel:+2348146372583" },
   links: [
     { label: "kwagga.dev", href: "https://kwagga.dev" },
@@ -27,12 +30,11 @@ export const cv = {
 
   experience: [
     {
-      role: "Software Developer",
+      role: "Head of IT",
       org: "OayasTech Nigeria Limited",
-      period: "2024 — 2026",
+      period: "2024 — Present",
       points: [
         "Built web and mobile solutions for the company's clients, including computer-based testing platforms, business portfolios and business management software.",
-        "Set up networks and managed hardware for clients.",
       ],
     },
     {
@@ -58,15 +60,27 @@ export const cv = {
   skills: [
     {
       group: "Frontend",
-      items: ["JavaScript", "HTML5", "CSS", "React", "Next.js", "Tailwind CSS"],
+      items: ["TypeScript", "JavaScript", "React", "Next.js", "Tailwind CSS", "HTML5", "CSS"],
     },
     {
       group: "Backend & Data",
       items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Prisma", "Supabase"],
     },
     {
+      group: "DevOps & Hosting",
+      items: [
+        "GitHub Actions CI/CD",
+        "Vercel",
+        "Cloudflare",
+        "Netlify",
+        "Docker",
+        "Linux / VPS",
+        "cPanel",
+      ],
+    },
+    {
       group: "Security & Tooling",
-      items: ["Web application security", "Docker", "Linux", "GitHub", "Figma"],
+      items: ["Web application security", "Git & GitHub", "Figma"],
     },
   ],
 
@@ -88,8 +102,6 @@ export const cvProjects: Project[] = cv.projectTitles
   .filter((p): p is Project => Boolean(p));
 
 export const cvClients = clients.map((c) => c.name);
-
-export const cvEmail = `${cv.email.user}@${cv.email.domain}`;
 
 /** Short, human label for a project link ("saukipay.net", "Google Play"). */
 export function linkLabel(href: string): string | null {

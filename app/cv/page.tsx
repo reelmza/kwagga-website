@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Download, MapPin } from "lucide-react";
-import { EmailLink } from "@/components/EmailLink";
 import { JsonLd } from "@/components/JsonLd";
 import { cvJsonLd } from "@/lib/structured-data";
 import { cv, cvClients, cvProjects, linkLabel } from "@/lib/cv";
@@ -80,13 +79,18 @@ export default function CvPage() {
           <p className="mt-3 font-serif text-xl italic text-ink-soft sm:text-2xl">
             {cv.role}
           </p>
+          <p className="mt-4 flex items-center gap-2 text-sm font-medium text-ink sm:text-base">
+            <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-accent" />
+            {cv.availability}
+          </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-text-mute">
-            <EmailLink
-              user={cv.email.user}
-              domain={cv.email.domain}
+            <a
+              href={`mailto:${cv.email}`}
               className="border-b border-accent text-ink no-underline transition-colors hover:text-accent-strong"
-            />
+            >
+              {cv.email}
+            </a>
             <a
               href={cv.phone.href}
               className="whitespace-nowrap no-underline transition-colors hover:text-ink"
